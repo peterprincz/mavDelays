@@ -7,6 +7,8 @@ class MavSchedule:
     def __init__(self, from_place, to_place):
         mav_url = self._generate_mav_string(to_place)
         self.trains = self._get_trains_from_url(mav_url)
+        for train in self.trains:
+            train.route = from_place + "-" + to_place
 
 
 
