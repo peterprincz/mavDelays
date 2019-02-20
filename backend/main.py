@@ -26,7 +26,7 @@ def add_train_to_db(session, trains_in_db, train):
         if train.origin_start == db_train.origin_start and train.origin_arrival == db_train.origin_arrival and train.route == db_train.route:
             train_in_db = True
             if db_train.real_arrival != train.real_arrival or db_train.real_start != train.real_start:
-                session.query(Train).filter(Train.id == db_train.id).update({'real_start': train.real_start, 'real_arrival': train.real_arrival})
+                session.query(Train).filter(Train.id == db_train.id).update({'real_start': train.real_start, 'real_arrival': train.real_arrival, "date": train.date})
                 break
     if train_in_db is False:
         session.add(train)
